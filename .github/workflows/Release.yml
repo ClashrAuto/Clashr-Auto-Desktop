@@ -1,0 +1,153 @@
+name: Release
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: "*/10 * * * *"
+# on: [push]
+
+jobs:
+  release:
+    name: Release
+
+    runs-on: macos
+
+    steps:
+
+      - name: init
+        uses: actions/checkout@v1
+      
+      - name: get sha
+        id: sha
+        shell: bash
+        run: echo "::set-output name=value::$(cat sha.txt)"
+
+      - name: clone
+        env:
+          sha: ${{steps.sha.outputs.value}} 
+        run: |
+          ls -alF
+          rm -rf *
+          rm -rf .git
+          rm -rf .github
+          ls -alF
+          git clone ${{secrets.GIT_ADDRESS}} .
+          git checkout $sha
+        shell: bash
+
+      - name: get package
+        id: package
+        uses: Ireoo/get-package@v1
+        with:
+          path: package.json
+          key: version
+
+      - name: create release
+        id: release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          tag_name: v${{steps.package.outputs.version}}
+          release_name: V${{steps.package.outputs.version}}
+          draft: false
+          prerelease: false
+
+      - name: init cache
+        env:
+          git_cache: ${{secrets.GIT_CACHE}}
+          upload_url: ${{steps.release.outputs.upload_url}}
+          github_sha: ${{github.sha}}
+        run: |
+          git clone $git_cache cache
+          cd cache
+          echo "$upload_url" > $github_sha.txt
+          git add $github_sha.txt
+          git commit -m "$github_sha"
+          git push
+     
+  build:
+    needs: [release]
+    
+    runs-on: ${{matrix.os}}
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [12]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+
+    steps:
+      - name: init
+        uses: actions/checkout@master
+
+      - name: set node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: get sha
+        id: sha
+        shell: bash
+        run: echo "::set-output name=value::$(cat sha.txt)"
+
+      - name: clone
+        env:
+          sha: ${{steps.sha.outputs.value}} 
+        run: |
+          ls -alF
+          rm -rf *
+          rm -rf .git
+          rm -rf .github
+          ls -alF
+          git clone ${{secrets.GIT_ADDRESS}} .
+          git checkout $sha
+        shell: bash
+      
+      - name: install
+        run: npm i
+      
+#       - name: install electron-builder with macos latest
+#         if: startsWith(matrix.os, 'macOS')
+#         run: npm i electron-builder@21.2.0
+      
+      - name: build
+        run: npm run build:chromebook
+      
+      - name: deploy
+        run: npm run upload:null
+
+      - name: get package version
+        id: package
+        uses: Ireoo/get-package@v1
+        with:
+          path: ./package.json
+          key: version
+    
+      - name: get package productName
+        id: package1
+        uses: Ireoo/get-package@v1
+        with:
+          path: package.json
+          key: productName
+    
+      - name: init cache
+        id: cache
+        shell: bash
+        env:
+          git_cache: ${{secrets.GIT_CACHE}}
+          github_sha: ${{github.sha}}
+        run: |
+          git clone $git_cache cache
+          cd cache
+          echo "::set-output name=upload_url::$(cat $github_sha.txt)"
+
+      - name: Upload Release
+        uses: Ireoo/upload-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.cache.outputs.upload_url }}
+          dir: build
+          exts: '["exe", "dmg", "zip", "appimage", "deb", "rpm", "apk", "msi", "pkg", "appx"]'
+          suffix: "_${{ matrix.node }}"
