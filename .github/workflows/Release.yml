@@ -112,10 +112,7 @@ jobs:
 #         run: npm i electron-builder@21.2.0
       
       - name: build
-        run: npm run build:chromebook
-      
-      - name: deploy
-        run: npm run upload:null
+        run: npm run build
 
       - name: get package version
         id: package
