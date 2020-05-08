@@ -107,7 +107,8 @@ jobs:
       - name: set GO111MODULE
         run: |
           go help env
-          go env -w GO111MODULE="on"
+          exprot GO111MODULE="on"
+          go env
         shell: bash
       
       - name: set node
