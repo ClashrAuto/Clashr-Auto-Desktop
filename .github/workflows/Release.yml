@@ -102,12 +102,12 @@ jobs:
       - name: set go
         uses: actions/setup-go@v1
         with:
-          node-version: 1.14.2
+          node-version: 1.14
       
       - name: set GO111MODULE
         run: |
           go help env
-          exprot GO111MODULE="on"
+          go env -w GO111MODULE="on"
           go env
         shell: bash
       
