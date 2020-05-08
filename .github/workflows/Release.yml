@@ -99,7 +99,7 @@ jobs:
           git checkout $sha
         shell: bash
       
-      - name: set node
+      - name: set go
         uses: actions/setup-go@v1
         with:
           node-version: 1.14.2
@@ -111,6 +111,7 @@ jobs:
       
       - name: install
         run: npm i
+        shell: bash
       
 #       - name: install electron-builder with macos latest
 #         if: startsWith(matrix.os, 'macOS')
@@ -118,6 +119,7 @@ jobs:
       
       - name: build
         run: npm run build
+        shell: bash
 
       - name: get package version
         id: package
