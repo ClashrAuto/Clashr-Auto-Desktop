@@ -105,7 +105,9 @@ jobs:
           node-version: 1.14.2
       
       - name: set GO111MODULE
-        run: go env -w GO111MODULE="on"
+        run: |
+          go help env
+          go env -w GO111MODULE="on"
         shell: bash
       
       - name: set node
