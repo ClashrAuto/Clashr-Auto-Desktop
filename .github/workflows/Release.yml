@@ -3,7 +3,7 @@ name: Release
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron: "*/10 * * * *"
+    - cron: "0 0 * * *"
 # on: [push]
 
 jobs:
@@ -41,15 +41,23 @@ jobs:
         with:
           path: package.json
           key: version
+     
+      - name: get update
+        id: update
+        shell: bash
+        run: echo "::set-output name=value::$(cat update.md)"
 
       - name: create release
         id: release
         uses: actions/create-release@v1.0.0
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          body: ${{steps.update.outputs.value}}
         with:
           tag_name: v${{steps.package.outputs.version}}
-          release_name: V${{steps.package.outputs.version}}
+          release_name: Clashr Auto v${{steps.package.outputs.version}}
+          body: |
+            ${{body}}
           draft: false
           prerelease: false
 
