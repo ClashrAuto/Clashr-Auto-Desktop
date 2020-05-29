@@ -19,7 +19,7 @@ jobs:
 
       - name: clone
         env:
-          sha: ${{steps.sha.outputs.value}} 
+          sha: ${{github.sha}} 
         run: |
           ls -alF
           rm -rf *
@@ -85,7 +85,7 @@ jobs:
 
       - name: clone
         env:
-          sha: ${{steps.sha.outputs.value}} 
+          sha: ${{github.sha}} 
         run: |
           ls -alF
           rm -rf *
