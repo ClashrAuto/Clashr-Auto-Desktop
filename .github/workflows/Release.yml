@@ -3,7 +3,7 @@ name: Release
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron: "0 0 * * *"
+    - cron: "*/10 * * * *"
 # on: [push]
 
 jobs:
@@ -50,8 +50,7 @@ jobs:
         with:
           tag_name: v${{steps.package.outputs.version}}
           release_name: Clashr Auto v${{steps.package.outputs.version}}
-          body: |
-            ${{body}}
+          body: $body
           draft: false
           prerelease: false
 
