@@ -10,7 +10,7 @@ jobs:
   release:
     name: Release
 
-    runs-on: macos
+    runs-on: MacOS-latest
 
     steps:
 
