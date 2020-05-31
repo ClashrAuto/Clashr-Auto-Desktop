@@ -46,12 +46,11 @@ jobs:
         uses: actions/create-release@v1.1.0
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          body: ${{steps.update.outputs.value}}
         with:
           tag_name: v${{steps.package.outputs.version}}
           release_name: Clashr Auto v${{steps.package.outputs.version}}
           body: ｜
-            $body
+            ${{steps.update.outputs.value}}
           draft: false
           prerelease: false
 
