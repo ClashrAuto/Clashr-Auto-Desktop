@@ -1,6 +1,7 @@
 # Clashr-Auto-Desktop
 ### 无需学习，简单设置即可稳定使用！
 
+## 软件截图
 ![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/clashr.auto.png "Clashr Auto Desktop")
 
 ## 支持平台
