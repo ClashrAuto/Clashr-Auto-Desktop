@@ -1,4 +1,6 @@
 # Clashr-Auto-Desktop
+---
+### 无需学习，简单设置即可稳定使用！
 
 ![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/clashr.auto.png "Clashr Auto Desktop")
 
@@ -27,3 +29,6 @@
 > 1. [x] 代理地址可以让用户自己选择
 > 1. [x] 增加区域选择
 > 1. [x] 支持 MacOS 系统
+
+
+## 欢迎提交bug和建议
