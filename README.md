@@ -1,5 +1,7 @@
 # Clashr-Auto-Desktop
 
+![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/clashr.auto.png "Clashr Auto Desktop")
+
 ## 支持平台
 
 | 平台    | 全局（支持游戏） | 普通（只代理网页） |
