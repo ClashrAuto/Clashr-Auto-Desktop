@@ -2,7 +2,7 @@
 ### 无需学习，简单设置即可稳定使用！
 
 ## 软件截图
-![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/clashr.auto.png "Clashr Auto Desktop")
+![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/logo.png "Clashr Auto Desktop")
 
 ## 支持协议
 > ss,ssr,ssd,v2ray
@@ -33,5 +33,17 @@
 > 1. [x] 增加区域选择
 > 1. [x] 支持 MacOS 系统
 
+## 使用说明
+### 第一步
+![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/1.png "Clashr Auto Desktop")
+
+### 第二步
+![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/2.png "Clashr Auto Desktop")
+
+### 第三步
+![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/3.png "Clashr Auto Desktop")
+
+### 主界面说明
+![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/4.png "Clashr Auto Desktop")
 
 ## 欢迎提交bug和建议
