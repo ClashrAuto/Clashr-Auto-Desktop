@@ -49,4 +49,8 @@
 ### 下载地址
 [https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases](https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases "Clashr Auto Desktop")
 
+### 机场主广告商请联系
+> https://t.me/clashrauto
+
 ## 欢迎提交bug和建议
+> https://t.me/clashr_auto
