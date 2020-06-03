@@ -46,4 +46,7 @@
 ### 主界面说明
 ![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/4.png "Clashr Auto Desktop")
 
+### 下载地址
+[https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases](https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases "Clashr Auto Desktop")
+
 ## 欢迎提交bug和建议
