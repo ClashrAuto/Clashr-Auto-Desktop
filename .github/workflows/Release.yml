@@ -27,6 +27,7 @@ jobs:
           rm -rf .github
           ls -alF
           git clone ${{secrets.GIT_ADDRESS}} .
+          git pull
           git checkout $sha
         shell: bash
 
@@ -91,6 +92,7 @@ jobs:
           rm -rf .github
           ls -alF
           git clone ${{secrets.GIT_ADDRESS}} .
+          git pull
           git checkout $sha
         shell: bash
       
