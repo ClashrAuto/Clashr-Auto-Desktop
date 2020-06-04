@@ -32,6 +32,7 @@
 > 1. [x] 代理地址可以让用户自己选择
 > 1. [x] 增加区域选择
 > 1. [x] 支持 MacOS 系统
+> 1. [x] 修复节点重复问题，优化没有netflix节点时不显示
 
 ## 使用说明
 ### 第一步
@@ -47,10 +48,10 @@
 ![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/4.png "Clashr Auto Desktop")
 
 ### 下载地址
-[https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases](https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases "Clashr Auto Desktop")
+> [https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases](https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases "Clashr Auto Desktop")
 
 ### 机场主广告商请联系
 > https://t.me/clashrauto
 
-## 欢迎提交bug和建议
+### 欢迎提交bug和建议
 > https://t.me/clashr_auto
