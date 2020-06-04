@@ -17,9 +17,14 @@ jobs:
       - name: init
         uses: actions/checkout@v1
 
+      - name: get sha
+        id: sha
+        shell: bash
+        run: echo "::set-output name=value::$(cat sha.txt)"
+
       - name: clone
         env:
-          sha: ${{github.sha}} 
+          sha: ${{steps.sha.outputs.value}}
         run: |
           ls -alF
           rm -rf *
@@ -27,7 +32,6 @@ jobs:
           rm -rf .github
           ls -alF
           git clone ${{secrets.GIT_ADDRESS}} .
-          git pull
           git checkout $sha
         shell: bash
 
@@ -82,9 +86,14 @@ jobs:
       - name: init
         uses: actions/checkout@master
 
+      - name: get sha
+        id: sha
+        shell: bash
+        run: echo "::set-output name=value::$(cat sha.txt)"
+
       - name: clone
         env:
-          sha: ${{github.sha}} 
+          sha: ${{steps.sha.outputs.value}}
         run: |
           ls -alF
           rm -rf *
@@ -92,7 +101,6 @@ jobs:
           rm -rf .github
           ls -alF
           git clone ${{secrets.GIT_ADDRESS}} .
-          git pull
           git checkout $sha
         shell: bash
       
