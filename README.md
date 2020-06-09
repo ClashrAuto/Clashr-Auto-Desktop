@@ -52,6 +52,3 @@
 
 ### 机场主广告商请联系
 > https://t.me/clashrauto
-
-### 欢迎提交bug和建议
-> https://t.me/clashr_auto
