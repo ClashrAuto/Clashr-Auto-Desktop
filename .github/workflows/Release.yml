@@ -64,6 +64,8 @@ jobs:
           upload_url: ${{steps.release.outputs.upload_url}}
           github_sha: ${{github.sha}}
         run: |
+          git config --global user.email "clashr.auto@gmail.com"
+          git config --global user.name "Clashr Auto"
           git clone $git_cache cache
           cd cache
           echo "$upload_url" > $github_sha.txt
