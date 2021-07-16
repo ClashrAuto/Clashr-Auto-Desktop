@@ -17,7 +17,7 @@
 
 
 ## 使用说明
-
+> [https://clashr-auto.gitbook.io](https://clashr-auto.gitbook.io "Clashr Auto DOCS")
 
 ### 下载地址
 > [https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases](https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases "Clashr Auto Desktop")
