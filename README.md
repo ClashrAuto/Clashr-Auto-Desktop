@@ -12,8 +12,8 @@
 | 平台    | 全局（支持游戏） | 普通（只代理网页） |
 | ------- | ---------------- | ---------- |
 | windows | 支持             | 支持       |
-| MacOS   | 支持             | 不支持     |
-| linux   | 不支持           | 不支持     |
+| MacOS(m1)   | 支持             | 支持       |
+| linux   | 支持             | 支持       |
 
 ## 更新内容
 
@@ -35,20 +35,7 @@
 > 1. [x] 修复节点重复问题，优化没有netflix节点时不显示
 
 ## 使用说明
-### 第一步
-![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/1.png "Clashr Auto Desktop")
 
-### 第二步
-![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/2.png "Clashr Auto Desktop")
-
-### 第三步
-![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/3.png "Clashr Auto Desktop")
-
-### 主界面说明
-![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/4.png "Clashr Auto Desktop")
 
 ### 下载地址
 > [https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases](https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases "Clashr Auto Desktop")
-
-### 机场主广告商请联系
-> https://t.me/clashrauto
