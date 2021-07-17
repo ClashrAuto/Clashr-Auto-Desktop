@@ -127,9 +127,28 @@ jobs:
         run: npm i
         shell: bash
       
-#       - name: install electron-builder with macos latest
-#         if: startsWith(matrix.os, 'macOS')
-#         run: npm i electron-builder@21.2.0
+      - name: clear without macos
+        if: startsWith(matrix.os, 'macOS')
+        run: |
+          rm -rf ./command/clash/clash-freebsd*
+          rm -rf ./command/clash/clash-linux*
+          rm -rf ./command/clash/clash-windows*
+        shell: bash
+        
+      - name: clear without linux
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          rm -rf ./command/clash/clash-darwin*
+          rm -rf ./command/clash/clash-windows*
+        shell: bash
+        
+      - name: clear without windows
+        if: startsWith(matrix.os, 'windows')
+        run: |
+          rm -rf ./command/clash/clash-freebsd*
+          rm -rf ./command/clash/clash-linux*
+          rm -rf ./command/clash/clash-darwin*
+        shell: bash
       
       - name: build
         run: npm run build
