@@ -20,4 +20,6 @@
 > [https://clashr-auto.gitbook.io](https://clashr-auto.gitbook.io "Clashr Auto DOCS")
 
 ### 下载地址
-> [https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases](https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases "Clashr Auto Desktop")
+> 正式版本 [https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases](https://github.com/ClashrAuto/Clashr-Auto-Desktop/releases "Clashr Auto Desktop")
+> 
+> 测试版本 [https://github.com/ClashrAuto/Clashr-Auto-Test/releases](https://github.com/ClashrAuto/Clashr-Auto-Test/releases "Clashr Auto Test")
