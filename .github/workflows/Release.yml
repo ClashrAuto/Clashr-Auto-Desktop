@@ -76,13 +76,13 @@ jobs:
   build:
     needs: [release]
     
-    runs-on: ${{matrix.os}}
+    runs-on: ${{matrix.os}}-latest
     
     strategy:
       fail-fast: false
       matrix:
         node: [14]
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu, macOS, windows]
 
     steps:
       - name: init
@@ -151,7 +151,7 @@ jobs:
         shell: bash
       
       - name: build
-        run: npm run build
+        run: npm run build:${{matrix.os}}
         shell: bash
 
       - name: get package version
