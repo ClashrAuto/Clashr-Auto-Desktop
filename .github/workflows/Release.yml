@@ -82,7 +82,7 @@ jobs:
       fail-fast: false
       matrix:
         node: [14]
-        os: [ubuntu, macOS, windows]
+        os: [ubuntu, macos, windows]
 
     steps:
       - name: init
@@ -128,7 +128,7 @@ jobs:
         shell: bash
       
       - name: clear without macos
-        if: startsWith(matrix.os, 'macOS')
+        if: startsWith(matrix.os, 'macos')
         run: |
           rm -rf ./command/clash/clash-freebsd*
           rm -rf ./command/clash/clash-linux*
