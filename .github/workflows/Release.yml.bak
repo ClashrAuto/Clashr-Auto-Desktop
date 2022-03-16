@@ -7,24 +7,15 @@ name: Release
 on: [push]
 
 jobs:
-  Build:
-    runs-on: macos-latest
+  release:
+    name: Release
 
-    strategy:
-      fail-fast: false
-      matrix:
-        node: [16]
-        # os: [macos, ubuntu, windows] # , ubuntu, windows
-        arch: [x64] # x86, x64, arm64, armv6l, armv7l, ppc64le, s390x
+    runs-on: macOS-latest
 
     steps:
-      - name: init
-        uses: actions/checkout@v2
 
-      #       - name: install brew
-      #         run: |
-      #           brew install rpm
-      #         shell: bash
+      - name: init
+        uses: actions/checkout@v1
 
       - name: get sha
         id: sha
@@ -44,50 +35,21 @@ jobs:
           git checkout $sha
         shell: bash
 
-      - name: set node
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
-          # architecture: ${{ matrix.arch }}
-          check-latest: true
-
-      - name: brew install
-        run: brew install rpm
-
-      - name: install
-        run: npm i
-        shell: bash
-
-      - name: build
-        run: npm run build:all
-        shell: bash
-
-      - name: ls
-        run: |
-          cd build
-          ls -alF
-        shell: bash
-
-      # - name: Upload a Build Artifact
-      #   uses: actions/upload-artifact@v2.2.4
-      #   with:
-      #     path: ./build/Clashr*
-
-      - name: get update
-        id: update
-        shell: bash
-        run: echo "::set-output name=value::$(cat update.md)"
-        
       - name: get package
         id: package
         uses: Ireoo/get-package@v1
         with:
           path: package.json
           key: version
+     
+      - name: get update
+        id: update
+        shell: bash
+        run: echo "::set-output name=value::$(cat update.md)"
 
       - name: create release
         id: release
-        uses: actions/create-release@v1.1.0
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
@@ -96,12 +58,115 @@ jobs:
           draft: false
           prerelease: false
 
+      - name: init cache
+        env:
+          git_cache: ${{secrets.GIT_CACHE}}
+          upload_url: ${{steps.release.outputs.upload_url}}
+          github_sha: ${{github.sha}}
+        run: |
+          git config --global user.email "clashr.auto@gmail.com"
+          git config --global user.name "Clashr Auto"
+          git clone $git_cache cache
+          cd cache
+          echo "$upload_url" > $github_sha.txt
+          git add $github_sha.txt
+          git commit -m "$github_sha"
+          git push
+     
+  build:
+    needs: [release]
+    
+    runs-on: ${{matrix.os}}
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [16]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+
+    steps:
+      - name: init
+        uses: actions/checkout@master
+
+      - name: get sha
+        id: sha
+        shell: bash
+        run: echo "::set-output name=value::$(cat sha.txt)"
+
+      - name: clone
+        env:
+          sha: ${{steps.sha.outputs.value}}
+        run: |
+          ls -alF
+          rm -rf *
+          rm -rf .git
+          rm -rf .github
+          ls -alF
+          git clone ${{secrets.GIT_ADDRESS}} .
+          git checkout $sha
+        shell: bash
+      
+      - name: set go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.14.2
+          check-latest: true
+      
+      - name: set GO111MODULE
+        run: |
+          go help env
+          go env -w GO111MODULE="on"
+          go env
+        shell: bash
+      
+      - name: set node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      
+      - name: install
+        run: npm i
+        shell: bash
+      
+      - name: npm run init
+        run: npm run init
+        shell: bash
+      
+      - name: npm run build
+        run: npm run build
+        shell: bash
+
+      - name: get package version
+        id: package
+        uses: Ireoo/get-package@v1
+        with:
+          path: ./package.json
+          key: version
+    
+      - name: get package productName
+        id: package1
+        uses: Ireoo/get-package@v1
+        with:
+          path: package.json
+          key: productName
+    
+      - name: init cache
+        id: cache
+        shell: bash
+        env:
+          git_cache: ${{secrets.GIT_CACHE}}
+          github_sha: ${{github.sha}}
+        run: |
+          git clone $git_cache cache
+          cd cache
+          echo "::set-output name=upload_url::$(cat $github_sha.txt)"
+
       - name: Upload Release
         uses: Ireoo/upload-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.release.outputs.upload_url }}
+          upload_url: ${{ steps.cache.outputs.upload_url }}
           dir: build
-          exts: '["exe", "dmg", "zip", "AppImage", "deb", "rpm", "apk", "msi", "pkg", "appx", "yaml", "yml"]'
+          exts: '["exe", "dmg", "zip", "appimage", "deb", "rpm", "apk", "msi", "pkg", "appx", "yaml", "yml"]'
           suffix: ""
