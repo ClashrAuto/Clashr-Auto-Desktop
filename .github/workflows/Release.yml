@@ -168,5 +168,5 @@ jobs:
         with:
           upload_url: ${{ steps.cache.outputs.upload_url }}
           dir: build
-          exts: '["exe", "dmg", "zip", "appimage", "deb", "rpm", "apk", "msi", "pkg", "appx", "yaml", "yml"]'
+          exts: '["exe", "dmg", "zip", "appimage", "deb", "rpm", "apk", "msi", "pkg", "appx"]'
           suffix: ""
