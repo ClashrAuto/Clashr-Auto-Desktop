@@ -55,6 +55,7 @@ jobs:
         with:
           tag_name: v${{steps.package.outputs.version}}
           release_name: Clashr Auto v${{steps.package.outputs.version}}
+          body: ${{github.event.head_commit.message}}
           draft: false
           prerelease: false
 
