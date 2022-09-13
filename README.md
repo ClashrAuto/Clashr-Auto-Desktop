@@ -1,4 +1,4 @@
-# Clashr-Auto-Desktop 网络加速软件
+# Clashr-Auto 网络加速软件
 ### 无需学习，简单设置即可稳定使用！
 
 ## 软件截图
