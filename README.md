@@ -5,7 +5,7 @@
 ![Clashr Auto Desktop](https://raw.githubusercontent.com/ClashrAuto/Clashr-Auto-Desktop/master/uploads/logo.png "Clashr Auto Desktop")
 
 ## 支持协议
-> ss,ssr,ssd,v2ray,trojan
+> ss,ssr,ssd,v2ray,trojan,vless,vmess等多种协议
 
 ## 支持平台
 
